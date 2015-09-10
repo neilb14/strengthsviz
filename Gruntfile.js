@@ -8,13 +8,13 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'src/<%= pkg.name %>.js',
-        dest: 'build/<%= pkg.name %>.min.js'
+        src: 'js/<%= pkg.name %>.js',
+        dest: 'js/<%= pkg.name %>.min.js'
       }
     },
     bower_concat: {
       all: {
-        dest: 'js/bower.js'
+        dest: 'js/<%= pkg.name %>.js'
       }
     }
   });
@@ -24,6 +24,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-bower-concat');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['bower_concat','uglify']);
 
 };
